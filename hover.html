@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hover In/Out</title>
+	<link rel="stylesheet" href="hover.css">
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+<div id="container">
+	<h1>Hover In/Out Assignment</h1>
+	<div id="images">
+		<img class="hover" src="sushi1.jpg" alt="sushi1" style="width:200px; height:150px;" data-src="sushi4.jpg"/>
+		<img class="hover" src="sushi2.jpg" alt="sushi2" style="width:200px; height:150px;" data-src="sushi3.jpg"/>
+		<img class="hover" src="sushi3.jpg" alt="sushi3" style="width:200px; height:150px;" data-src="sushi2.jpg"/>
+		<img class="hover" src="sushi4.jpg" alt="sushi4" style="width:200px; height:150px;" data-src="sushi1.jpg"/>
+	</div>
+</div>
+
+<script>
+/*var randimg=Math.floor(Math.random()*4);
+
+$(".hover").hover(function(){
+	//$(this).replaceWith(".hover").eq("randimg");
+	//$(this).replaceWith(function(){
+		//return $(this).eq ("randimg");
+
+if($(this).fadeOut()){
+$("img").fadeIn.eq("randimg");
+}
+});*/
+
+$(document).ready(function(){
+
+	$('img').hover(function(){
+        var oppo  = $(this).attr('data-src');
+        var origin = $(this).attr('src');
+	    $(this).fadeOut(400,function(){
+            $(this).fadeIn(650).attr('src', oppo);
+            $(this).attr('data-src', origin)
+    	});
+    }, function(){
+        var oppo = $(this).attr('src');
+        var origin = $(this).attr('data-src');
+        $(this).fadeOut(400, function(){
+            $(this).fadeIn(650).attr('src', origin);
+            $(this).attr('data-src',oppo);
+        });
+
+
+    });
+
+})
+
+</script>
+
+	
+</body>
+</html>
